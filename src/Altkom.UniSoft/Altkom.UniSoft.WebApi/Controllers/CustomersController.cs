@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Altkom.UniSoft.WebApi.Controllers
 {
+    // [RoutePrefix("api/customers")]
     [Route("api/customers")]
     public class CustomersController : ControllerBase
     {
@@ -46,6 +47,9 @@ namespace Altkom.UniSoft.WebApi.Controllers
         //}
 
         [HttpGet("{id:int}")]
+
+        //[HttpGet]
+        //[Route("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
             var customer = customerService.Get(id);
