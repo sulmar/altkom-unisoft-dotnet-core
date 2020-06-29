@@ -6,8 +6,11 @@ using Alktom.UniSoft.IServices;
 using Altkom.UniSoft.FakeServices;
 using Altkom.UniSoft.FakeServices.Fakers;
 using Altkom.UniSoft.Models;
+using Altkom.UniSoft.Models.Validators;
 using Altkom.UniSoft.WebApi.Constraints;
 using Bogus;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,8 +34,15 @@ namespace Altkom.UniSoft.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddXmlSerializerFormatters();
+            // dotnet add package FluentValidation.AspNetCore
 
+            services.AddControllers()
+                .AddFluentValidation(options => options.RegisterValidatorsFromAssemblyContaining<CustomerValidator>()) // auto
+                .AddXmlSerializerFormatters();
+
+            // manual
+            // services.AddTransient<IValidator<Customer>, CustomerValidator>();
+            
             services.AddRouting(options =>
             {
                 options.ConstraintMap.Add("pesel", typeof(PeselConstraint));

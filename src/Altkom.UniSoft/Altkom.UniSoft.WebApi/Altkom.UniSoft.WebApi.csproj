@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Alktom.UniSoft.IServices\Alktom.UniSoft.IServices.csproj" />
     <ProjectReference Include="..\Altkom.UniSoft.FakeServices\Altkom.UniSoft.FakeServices.csproj" />
   </ItemGroup>
