@@ -50,7 +50,7 @@ namespace Altkom.UniSoft.WebApi.Controllers
         //}
 
         // [HttpGet("{id:int}", Name = "GetById")]
-        [HttpGet]
+        [HttpGet(Name = "GetById")]
         //[Route("{id:int}")]
         [Route("{id:int}.{format?}"), FormatFilter]
         public async Task<IActionResult> Get(int id)
@@ -118,6 +118,9 @@ namespace Altkom.UniSoft.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Customer customer)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             customerService.Add(customer);
 
             // return Created($"api/customers/{customer.Id}", customer);
