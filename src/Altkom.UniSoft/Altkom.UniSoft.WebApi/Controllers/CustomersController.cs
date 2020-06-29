@@ -4,6 +4,7 @@ using Altkom.UniSoft.Models.SearchCriteria;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,10 +16,12 @@ namespace Altkom.UniSoft.WebApi.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService customerService;
+        private readonly IProductService productService;
 
-        public CustomersController(ICustomerService customerService)
+        public CustomersController(ICustomerService customerService, IProductService productService)
         {
             this.customerService = customerService;
+            this.productService = productService;
         }
 
         //[HttpGet]
@@ -29,13 +32,13 @@ namespace Altkom.UniSoft.WebApi.Controllers
         //    return customers;
         //}
 
-        //[HttpGet]
-        //public async Task<IActionResult> Get()
-        //{
-        //    var customers = customerService.Get();
+        [HttpGet]        
+        public async Task<IActionResult> Get()
+        {
+            var customers = customerService.Get();
 
-        //    return Ok(customers);
-        //}
+            return Ok(customers);
+        }
 
 
         //[HttpGet("{id}")]
@@ -46,10 +49,10 @@ namespace Altkom.UniSoft.WebApi.Controllers
         //    return customer;
         //}
 
-        [HttpGet("{id:int}")]
-
-        //[HttpGet]
+        // [HttpGet("{id:int}", Name = "GetById")]
+        [HttpGet]
         //[Route("{id:int}")]
+        [Route("{id:int}.{format?}"), FormatFilter]
         public async Task<IActionResult> Get(int id)
         {
             var customer = customerService.Get(id);
@@ -80,23 +83,112 @@ namespace Altkom.UniSoft.WebApi.Controllers
         //    return Ok();
         //}
 
-        [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] CustomerSearchCriteria criteria)
-        {
-            var customers = customerService.Get(criteria);
+        //[HttpGet]
+        //public async Task<IActionResult> Get([FromQuery] CustomerSearchCriteria criteria)
+        //{
+        //    var customers = customerService.Get(criteria);
 
-            return Ok(customers);
+        //    return Ok(customers);
+        //}
+
+        //[HttpGet]
+        //public async Task<IActionResult> Get(
+        //    [Required][Range(-90, 90)] double lat,
+        //    [Required][Range(-180, 180)] double lng)
+        //{
+        //    return Ok();
+        //}
+
+        //  GET api/customers/{id}/invoices"
+        //  GET api/customers/{id}/invoices/overdue"
+        //  GET api/customers/{id}/account"
+        //  GET api/customers/{id}/payments"
+        //  GET api/customers/{id}/payments/{paymentId}"
+
+        //  GET api/payments/{paymentId}"
+
+        [HttpGet("{customerId}/products")]
+        public async Task<IActionResult> GetProducts(int customerId)
+        {
+            var products = productService.GetByCustomer(customerId);
+
+            return Ok(products);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get(
-            [Required][Range(-90, 90)] double lat,
-            [Required][Range(-180, 180)] double lng)
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] Customer customer)
         {
+            customerService.Add(customer);
+
+            // return Created($"api/customers/{customer.Id}", customer);
+
+            return CreatedAtRoute("GetById", new { id = customer.Id }, customer);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] Customer customer)
+        {
+            try
+            {
+                if (id != customer.Id)
+                {
+                    return BadRequest();
+                }
+
+                customer = customerService.Get(id);
+
+                if (customer == null)
+                    return NotFound();
+
+                customerService.Update(customer);
+
+                return NoContent();
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
+        // JSON Patch http://jsonpatch.com/
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Patch(int id, string lastname)
+        {
+            Customer customer = customerService.Get(id);
+
+            if (customer == null)
+                return NotFound();
+
+            return NoContent();
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            Customer customer = customerService.Get(id);
+
+            if (customer == null)
+                return NotFound();
+
+            customerService.Remove(id);
+
+            return NoContent();
+        }
+
+        [HttpHead("{id}")]
+        public async Task<IActionResult> Head(int id)
+        {
+            Customer customer = customerService.Get(id);
+
+            if (customer == null)
+                return NotFound();
+
             return Ok();
+
         }
-
-
 
     }
 }

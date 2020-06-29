@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 
 namespace Altkom.UniSoft.FakeServices
 {
+
     public class FakeCustomerService : ICustomerService
     {
         private readonly ICollection<Customer> customers;
@@ -20,7 +21,9 @@ namespace Altkom.UniSoft.FakeServices
        
         public void Add(Customer entity)
         {
-            throw new NotImplementedException();
+            var lastId = customers.Max(c => c.Id);
+            entity.Id = ++lastId;
+            customers.Add(entity);
         }
 
         public ICollection<Customer> Get()
@@ -62,12 +65,13 @@ namespace Altkom.UniSoft.FakeServices
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            customers.Remove(Get(id));
         }
 
         public void Update(Customer entity)
         {
-            throw new NotImplementedException();
+            Remove(entity.Id);
+            Add(entity);            
         }
     }
 }
