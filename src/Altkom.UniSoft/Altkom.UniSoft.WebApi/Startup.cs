@@ -23,6 +23,8 @@ using Microsoft.Extensions.Options;
 
 namespace Altkom.UniSoft.WebApi
 {
+    // dotnet add package NSwag.AspNetCore
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -35,6 +37,10 @@ namespace Altkom.UniSoft.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            // OpenAPI
+            services.AddOpenApiDocument();
+
             // dotnet add package FluentValidation.AspNetCore
 
             services.AddControllers()
@@ -57,7 +63,7 @@ namespace Altkom.UniSoft.WebApi
             services.Configure<FakeCustomerServiceOptions>(Configuration.GetSection("FakeCustomerService"));
 
             // TODO:
-            // IOptions<FakeCustomerServiceOptions> options = Options.Create(new FakeCustomerServiceOptions { Count = 40 });
+            // IOptions<FakeCustomerServiceOptions> options = Options.Create(new FakeCustomerServiceOptions { Count = 40 });            
 
         }
 
@@ -93,6 +99,11 @@ namespace Altkom.UniSoft.WebApi
             app.UseRouting();            
 
             app.UseAuthorization();
+
+
+            // OpenApi
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseEndpoints(endpoints =>
             {

@@ -5,6 +5,9 @@
     <OutputType>Exe</OutputType>
     <UserSecretsId>daf88e12-2688-4157-bd0b-c499216b8bb5</UserSecretsId>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     <None Remove="appsettings.ini" />
     <None Remove="appsettings.xml" />
@@ -19,6 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.6.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alktom.UniSoft.IServices\Alktom.UniSoft.IServices.csproj" />
