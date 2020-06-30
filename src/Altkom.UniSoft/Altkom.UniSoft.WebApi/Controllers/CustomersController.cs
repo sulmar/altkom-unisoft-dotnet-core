@@ -16,12 +16,12 @@ namespace Altkom.UniSoft.WebApi.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService customerService;
-        private readonly IProductService productService;
+        // private readonly IProductService productService;
 
-        public CustomersController(ICustomerService customerService, IProductService productService)
+        public CustomersController(ICustomerService customerService)
         {
             this.customerService = customerService;
-            this.productService = productService;
+            //this.productService = productService;
         }
 
         //[HttpGet]
@@ -108,7 +108,7 @@ namespace Altkom.UniSoft.WebApi.Controllers
         //  GET api/payments/{paymentId}"
 
         [HttpGet("{customerId}/products")]
-        public async Task<IActionResult> GetProducts(int customerId)
+        public async Task<IActionResult> GetProducts([FromServices] IProductService productService, int customerId)
         {
             var products = productService.GetByCustomer(customerId);
 
