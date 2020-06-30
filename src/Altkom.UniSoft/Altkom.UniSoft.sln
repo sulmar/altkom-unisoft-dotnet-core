@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.Api", "Altko
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.OWINApi", "Altkom.UniSoft.OWINApi\Altkom.UniSoft.OWINApi.csproj", "{B7E53F34-8C1D-43FE-8DBE-96BF36E52BEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.SignalRHub", "Altkom.UniSoft.SignalRHub\Altkom.UniSoft.SignalRHub.csproj", "{3BD96C63-4586-402D-A978-25773FD1D769}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.SignalRSenderConsoleClient", "Altkom.UniSoft.SignalRSenderConsoleClient\Altkom.UniSoft.SignalRSenderConsoleClient.csproj", "{1348160D-4408-4FD2-B516-37593E6CFA1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.SignalRReceiverConsoleClient", "Altkom.UniSoft.SignalRReceiverConsoleClient\Altkom.UniSoft.SignalRReceiverConsoleClient.csproj", "{6463AB29-F4EB-4134-B91F-5FEA7F4C2107}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +57,18 @@ Global
 		{B7E53F34-8C1D-43FE-8DBE-96BF36E52BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7E53F34-8C1D-43FE-8DBE-96BF36E52BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7E53F34-8C1D-43FE-8DBE-96BF36E52BEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD96C63-4586-402D-A978-25773FD1D769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD96C63-4586-402D-A978-25773FD1D769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD96C63-4586-402D-A978-25773FD1D769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD96C63-4586-402D-A978-25773FD1D769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1348160D-4408-4FD2-B516-37593E6CFA1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1348160D-4408-4FD2-B516-37593E6CFA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1348160D-4408-4FD2-B516-37593E6CFA1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1348160D-4408-4FD2-B516-37593E6CFA1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6463AB29-F4EB-4134-B91F-5FEA7F4C2107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6463AB29-F4EB-4134-B91F-5FEA7F4C2107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6463AB29-F4EB-4134-B91F-5FEA7F4C2107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6463AB29-F4EB-4134-B91F-5FEA7F4C2107}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
