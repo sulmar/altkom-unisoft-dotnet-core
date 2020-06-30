@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.ConsoleClient", "Altkom.UniSoft.ConsoleClient\Altkom.UniSoft.ConsoleClient.csproj", "{20EE2A56-DCC9-478E-A9E5-DED3C5DD3792}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.UniSoft.ConsoleClient", "Altkom.UniSoft.ConsoleClient\Altkom.UniSoft.ConsoleClient.csproj", "{20EE2A56-DCC9-478E-A9E5-DED3C5DD3792}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.Models", "Altkom.UniSoft.Models\Altkom.UniSoft.Models.csproj", "{CEDB0092-13FD-4BD8-AC52-3B6DE58294C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.UniSoft.Models", "Altkom.UniSoft.Models\Altkom.UniSoft.Models.csproj", "{CEDB0092-13FD-4BD8-AC52-3B6DE58294C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alktom.UniSoft.IServices", "Alktom.UniSoft.IServices\Alktom.UniSoft.IServices.csproj", "{439A7964-9F78-4942-B634-DFF045397C1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alktom.UniSoft.IServices", "Alktom.UniSoft.IServices\Alktom.UniSoft.IServices.csproj", "{439A7964-9F78-4942-B634-DFF045397C1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.FakeServices", "Altkom.UniSoft.FakeServices\Altkom.UniSoft.FakeServices.csproj", "{15E1A8C6-F4F4-444E-8DFF-3DA412EC34EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.UniSoft.FakeServices", "Altkom.UniSoft.FakeServices\Altkom.UniSoft.FakeServices.csproj", "{15E1A8C6-F4F4-444E-8DFF-3DA412EC34EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.WebApi", "Altkom.UniSoft.WebApi\Altkom.UniSoft.WebApi.csproj", "{52E750CB-31B6-414D-9EF9-2CBB545C7669}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.UniSoft.WebApi", "Altkom.UniSoft.WebApi\Altkom.UniSoft.WebApi.csproj", "{52E750CB-31B6-414D-9EF9-2CBB545C7669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.Api", "Altkom.UniSoft.Api\Altkom.UniSoft.Api.csproj", "{4E9F4E73-56F4-441F-8E04-7785F9A45ED3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{52E750CB-31B6-414D-9EF9-2CBB545C7669}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52E750CB-31B6-414D-9EF9-2CBB545C7669}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52E750CB-31B6-414D-9EF9-2CBB545C7669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E9F4E73-56F4-441F-8E04-7785F9A45ED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E9F4E73-56F4-441F-8E04-7785F9A45ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E9F4E73-56F4-441F-8E04-7785F9A45ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E9F4E73-56F4-441F-8E04-7785F9A45ED3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

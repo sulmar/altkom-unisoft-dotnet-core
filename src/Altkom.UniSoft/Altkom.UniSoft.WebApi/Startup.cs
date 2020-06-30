@@ -74,6 +74,8 @@ namespace Altkom.UniSoft.WebApi
 
             int limit = int.Parse(Configuration["SmsApi:limit"]);
 
+            string googleMapApiKey = Configuration["GoogleMapsApiKey"];
+
             // int count = int.Parse(Configuration["FakeCustomerService:Count"]);
 
             if (env.IsEnvironment("StagingA"))
@@ -88,7 +90,7 @@ namespace Altkom.UniSoft.WebApi
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseRouting();            
 
             app.UseAuthorization();
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,7 @@ namespace Altkom.UniSoft.WebApi
                     config.AddIniFile("appsettings.ini", optional: true, reloadOnChange: true);
                     config.AddIniFile("appsettings.local.ini", optional: true, reloadOnChange: true);
                     config.AddJsonFile($"appsettings.{environmentName}.json", optional: true);
+                    config.AddUserSecrets(Assembly.GetExecutingAssembly());
                     config.AddEnvironmentVariables();
                     config.AddCommandLine(args);
                     

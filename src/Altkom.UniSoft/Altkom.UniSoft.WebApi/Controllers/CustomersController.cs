@@ -36,8 +36,13 @@ namespace Altkom.UniSoft.WebApi.Controllers
         public async Task<IActionResult> Get()
         {
             var customers = customerService.Get();
-
+            
             return Ok(customers);
+        }
+
+        public async Task<IActionResult> Upload()
+        {
+            return Accepted();
         }
 
 
