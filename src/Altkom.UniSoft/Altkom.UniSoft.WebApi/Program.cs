@@ -13,11 +13,26 @@ namespace Altkom.UniSoft.WebApi
     {
         public static void Main(string[] args)
         {
+            string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
             CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config)=>
+                {
+                    string environmentName = hostingContext.HostingEnvironment.EnvironmentName;
+
+                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                    config.AddXmlFile("appsettings.xml", optional: true, reloadOnChange: true);
+                    config.AddIniFile("appsettings.ini", optional: true, reloadOnChange: true);
+                    config.AddIniFile("appsettings.local.ini", optional: true, reloadOnChange: true);
+                    config.AddJsonFile($"appsettings.{environmentName}.json", optional: true);
+                    config.AddEnvironmentVariables();
+                    config.AddCommandLine(args);
+                    
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

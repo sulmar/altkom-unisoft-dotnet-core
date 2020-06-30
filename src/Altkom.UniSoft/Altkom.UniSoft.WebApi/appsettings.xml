@@ -1,0 +1,5 @@
+﻿<configuration>
+  <FakeCustomerService>
+    <Count>30</Count>
+  </FakeCustomerService>
+</configuration>

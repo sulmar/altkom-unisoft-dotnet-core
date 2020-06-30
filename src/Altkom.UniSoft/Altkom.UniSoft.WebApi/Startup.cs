@@ -61,6 +61,12 @@ namespace Altkom.UniSoft.WebApi
 
         }
 
+
+        public void ConfigureDevelopment(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+
+        }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -70,7 +76,10 @@ namespace Altkom.UniSoft.WebApi
 
             // int count = int.Parse(Configuration["FakeCustomerService:Count"]);
 
+            if (env.IsEnvironment("StagingA"))
+            {
 
+            }
 
             if (env.IsDevelopment())
             {

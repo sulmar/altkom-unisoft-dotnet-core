@@ -16,6 +16,9 @@ namespace Altkom.UniSoft.FakeServices
     public class FakeCustomerServiceOptions
     {
         public int Count { get; set; }
+        public string Name { get; set; }
+        public DateTime DueDate { get; set; }
+        public decimal LimitAmount { get; set; }
     }
 
     // dotnet add package Microsoft.Extensions.Options
