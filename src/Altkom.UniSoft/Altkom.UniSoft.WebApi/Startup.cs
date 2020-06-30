@@ -19,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Altkom.UniSoft.WebApi
 {
@@ -42,7 +43,7 @@ namespace Altkom.UniSoft.WebApi
 
             // manual
             // services.AddTransient<IValidator<Customer>, CustomerValidator>();
-            
+
             services.AddRouting(options =>
             {
                 options.ConstraintMap.Add("pesel", typeof(PeselConstraint));
@@ -52,11 +53,25 @@ namespace Altkom.UniSoft.WebApi
             services.AddSingleton<Faker<Customer>, CustomerFaker>();
 
             services.AddSingleton<IProductService, FakeProductService>();
+
+            services.Configure<FakeCustomerServiceOptions>(Configuration.GetSection("FakeCustomerService"));
+
+            // TODO:
+            // IOptions<FakeCustomerServiceOptions> options = Options.Create(new FakeCustomerServiceOptions { Count = 40 });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            string uri = Configuration["Uri"];
+
+            int limit = int.Parse(Configuration["SmsApi:limit"]);
+
+            // int count = int.Parse(Configuration["FakeCustomerService:Count"]);
+
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -65,7 +80,7 @@ namespace Altkom.UniSoft.WebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
-         
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

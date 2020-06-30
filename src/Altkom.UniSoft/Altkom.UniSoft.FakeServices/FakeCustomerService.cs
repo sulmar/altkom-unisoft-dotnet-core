@@ -2,6 +2,7 @@
 using Altkom.UniSoft.Models;
 using Altkom.UniSoft.Models.SearchCriteria;
 using Bogus;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,21 @@ using System.Runtime.InteropServices;
 namespace Altkom.UniSoft.FakeServices
 {
 
+    // Wzorzec opcji
+    
+    public class FakeCustomerServiceOptions
+    {
+        public int Count { get; set; }
+    }
+
+    // dotnet add package Microsoft.Extensions.Options
     public class FakeCustomerService : ICustomerService
     {
         private readonly ICollection<Customer> customers;
 
-        public FakeCustomerService(Faker<Customer> customerFaker)
+        public FakeCustomerService(Faker<Customer> customerFaker, IOptions<FakeCustomerServiceOptions> options)
         {
-            customers = customerFaker.Generate(100);
+            customers = customerFaker.Generate(options.Value.Count);
         }
        
         public void Add(Customer entity)
