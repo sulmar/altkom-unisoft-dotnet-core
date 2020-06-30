@@ -50,7 +50,7 @@ namespace Altkom.UniSoft.WebApi.Controllers
         //}
 
         // [HttpGet("{id:int}", Name = "GetById")]
-        [HttpGet(Name = "GetById")]
+        // [HttpGet(Name = "GetById")]
         //[Route("{id:int}")]
         [Route("{id:int}.{format?}"), FormatFilter]
         public async Task<IActionResult> Get(int id)
