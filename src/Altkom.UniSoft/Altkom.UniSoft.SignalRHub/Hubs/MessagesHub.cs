@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 namespace Altkom.UniSoft.SignalRHub.Hubs
 {
     // Strong typed hub
-    
-    
+        
     public class StrongTypedMessagesHub : Hub<IMessageClient>
     {
         public override Task OnConnectedAsync()

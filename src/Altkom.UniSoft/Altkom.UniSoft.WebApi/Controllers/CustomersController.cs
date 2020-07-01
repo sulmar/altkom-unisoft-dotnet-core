@@ -2,6 +2,7 @@
 using Altkom.UniSoft.Models;
 using Altkom.UniSoft.Models.SearchCriteria;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,14 @@ namespace Altkom.UniSoft.WebApi.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService customerService;
+        private readonly ILogger<CustomersController> logger;
+
         // private readonly IProductService productService;
 
-        public CustomersController(ICustomerService customerService)
+        public CustomersController(ICustomerService customerService, ILogger<CustomersController> logger)
         {
             this.customerService = customerService;
+            this.logger = logger;
             //this.productService = productService;
         }
 
@@ -34,8 +38,10 @@ namespace Altkom.UniSoft.WebApi.Controllers
 
         [HttpGet]        
         public async Task<IActionResult> Get()
-        {
+        {            
             var customers = customerService.Get();
+
+            logger.LogInformation($"Pobrano {customers.Count} klientów.");
             
             return Ok(customers);
         }
