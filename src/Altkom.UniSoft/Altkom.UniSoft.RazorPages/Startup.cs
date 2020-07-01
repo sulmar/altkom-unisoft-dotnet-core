@@ -11,6 +11,7 @@ using Bogus;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,7 +37,27 @@ namespace Altkom.UniSoft.RazorPages
 
             services.AddSingleton<ITimeSinceService, TimeSinceService>();
 
-            services.AddRazorPages();
+
+            services.Configure<RouteOptions>(options =>
+            {
+                options.LowercaseUrls = true;
+                options.LowercaseQueryStrings = true;
+                options.AppendTrailingSlash = false;
+            });
+
+            services.AddRazorPages()
+                .AddRazorPagesOptions(options =>
+                {
+                    //options.Conventions.AuthorizePage("/Customers/Index");
+                    //options.Conventions.AuthorizePage("/Customers/Edit");
+                    //options.Conventions.AuthorizePage("/Customers/Details");
+
+                    options.Conventions.AuthorizeFolder("/Customers");
+                    options.Conventions.AllowAnonymousToPage("/Customers/Index");
+                });
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
