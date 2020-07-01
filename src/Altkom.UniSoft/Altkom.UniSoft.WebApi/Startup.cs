@@ -11,6 +11,7 @@ using Altkom.UniSoft.WebApi.Constraints;
 using Bogus;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -64,6 +65,11 @@ namespace Altkom.UniSoft.WebApi
 
             // TODO:
             // IOptions<FakeCustomerServiceOptions> options = Options.Create(new FakeCustomerServiceOptions { Count = 40 });            
+
+            services.AddSingleton<ISenderService, FakeEmailSenderService>();
+
+            // dotnet add package MediatR.Extensions.Microsoft.DependencyInjection
+            services.AddMediatR(typeof(Startup).Assembly);
 
         }
 

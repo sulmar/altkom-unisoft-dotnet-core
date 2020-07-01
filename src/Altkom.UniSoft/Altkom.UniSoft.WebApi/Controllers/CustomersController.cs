@@ -1,6 +1,10 @@
 ﻿using Alktom.UniSoft.IServices;
 using Altkom.UniSoft.Models;
 using Altkom.UniSoft.Models.SearchCriteria;
+using Altkom.UniSoft.WebApi.Events;
+using Altkom.UniSoft.WebApi.Handlers;
+using Altkom.UniSoft.WebApi.Requests;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,6 +16,9 @@ using System.Threading.Tasks;
 
 namespace Altkom.UniSoft.WebApi.Controllers
 {
+    // dotnet add package MediatR
+
+
     // [RoutePrefix("api/customers")]
     [Route("api/customers")]
     public class CustomersController : ControllerBase
@@ -19,15 +26,22 @@ namespace Altkom.UniSoft.WebApi.Controllers
         private readonly ICustomerService customerService;
         private readonly ISenderService senderService;
 
+        private readonly IMediator mediator;
+
         private readonly ILogger<CustomersController> logger;
 
         // private readonly IProductService productService;
 
-        public CustomersController(ICustomerService customerService, ISenderService senderService, ILogger<CustomersController> logger)
+        public CustomersController(
+            ICustomerService customerService, 
+            ISenderService senderService, 
+            ILogger<CustomersController> logger,
+            IMediator mediator)
         {
             this.customerService = customerService;
             this.senderService = senderService;
             this.logger = logger;
+            this.mediator = mediator;
             //this.productService = productService;
         }
 
@@ -41,10 +55,12 @@ namespace Altkom.UniSoft.WebApi.Controllers
 
         [HttpGet]        
         public async Task<IActionResult> Get()
-        {            
-            var customers = customerService.Get();
+        {
+            // var customers = customerService.Get();
 
-            logger.LogInformation($"Pobrano {customers.Count} klientów.");
+            var customers = await mediator.Send(new GetCustomersRequest());
+
+           // logger.LogInformation($"Pobrano {customers.Count} klientów.");
             
             return Ok(customers);
         }
@@ -135,8 +151,10 @@ namespace Altkom.UniSoft.WebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            customerService.Add(customer);
-            senderService.Send(customer);
+            //customerService.Add(customer);
+            //senderService.Send(customer);
+
+            await mediator.Publish(new AddCustomerEvent(customer));
 
             // return Created($"api/customers/{customer.Id}", customer);
 
