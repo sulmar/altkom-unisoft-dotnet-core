@@ -1,4 +1,5 @@
-﻿using Altkom.UniSoft.Models;
+﻿using Alktom.UniSoft.IServices;
+using Altkom.UniSoft.Models;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace Altkom.UniSoft.SignalRReceiverConsoleClient
 
             Console.WriteLine("Connected.");
 
-            connection.On<Message>("YouHaveGotMessage", 
+            connection.On<Message>(nameof(IMessageClient.YouHaveGotMessage), 
                 message => Console.WriteLine($"{message.Title} - {message.Content}"));
 
             Console.WriteLine("Press any key to exit.");

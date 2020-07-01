@@ -32,7 +32,7 @@ namespace Altkom.UniSoft.SignalRHub
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<MessagesHub>("/signalr/messages");
+                endpoints.MapHub<StrongTypedMessagesHub>("/signalr/messages");
 
                 endpoints.MapGet("/", async context =>
                 {
