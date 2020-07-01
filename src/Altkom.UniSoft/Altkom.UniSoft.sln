@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.SignalRRecei
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.WebMVC", "Altkom.UniSoft.WebMVC\Altkom.UniSoft.WebMVC.csproj", "{642814A1-1892-4354-8705-DDC75E83B31B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.RazorPages", "Altkom.UniSoft.RazorPages\Altkom.UniSoft.RazorPages.csproj", "{1875C21B-D7F9-4512-AC3C-E2F943496D5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{642814A1-1892-4354-8705-DDC75E83B31B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{642814A1-1892-4354-8705-DDC75E83B31B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{642814A1-1892-4354-8705-DDC75E83B31B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1875C21B-D7F9-4512-AC3C-E2F943496D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1875C21B-D7F9-4512-AC3C-E2F943496D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1875C21B-D7F9-4512-AC3C-E2F943496D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1875C21B-D7F9-4512-AC3C-E2F943496D5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

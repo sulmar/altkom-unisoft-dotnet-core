@@ -1,0 +1,26 @@
+﻿@page "{id:min(1)}/{filter}"
+@model Altkom.UniSoft.RazorPages.Pages.Customers.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+
+    Console.WriteLine("Hello");
+}
+
+<h1>Details</h1>
+
+<div class="card shadow mb-4">
+    <div class="card-header">
+        <h6 class="m-0 text-primary">@Model.Customer.FullName</h6>
+    </div>
+
+    <div class="card-body">
+        <h3 class="card-title">@Model.Customer.FirstName</h3>
+        <h3 class="card-title">@Model.Customer.LastName</h3>
+        <h3 class="card-text">@Model.Customer.Email</h3>
+
+        @if (Model.Customer.Gender == Models.Gender.Woman)
+        {
+            <h3 class="card-text">Kobieta</h3>
+        }
+    </div>
+</div>

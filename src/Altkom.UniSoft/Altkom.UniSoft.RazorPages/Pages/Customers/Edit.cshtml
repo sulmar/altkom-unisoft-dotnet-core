@@ -1,0 +1,32 @@
+﻿@page
+@model Altkom.UniSoft.RazorPages.Pages.Customers.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form method="post">
+
+    <div class="form-row">
+
+        <input type="hidden" asp-for="Customer.Id" />
+
+        <div class="form-group col-md-6">
+            <label class="control-label">First Name</label>
+            <input type="text" asp-for="Customer.FirstName" class="form-control" />
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="control-label">Last Name</label>
+            <input type="text" asp-for="Customer.LastName" class="form-control" />
+        </div>
+
+        <div>
+            <input type="checkbox" asp-for="Customer.IsRemoved" class="form-check-input" />
+            <label class="form-check-label">Is Removed</label>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Save</button>
+</form>

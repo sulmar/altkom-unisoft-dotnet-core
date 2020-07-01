@@ -1,0 +1,42 @@
+﻿@page
+@model Altkom.UniSoft.RazorPages.Pages.Customers.IndexModel
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h1>Customers</h1>
+
+<h2>@Model.Message</h2>
+
+<table class="table table-hover table-light" >
+    <thead>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Is Removed</th>
+
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            string classname = customer.Id == Model.SelectedCustomerId ? "table-warning" : string.Empty;
+
+            <tr class="@classname" >                
+                <td>@Html.DisplayFor(m => customer.FirstName)</td>
+                <td>@Html.DisplayFor(m => customer.LastName)</td>
+                <td>@Html.DisplayFor(m => customer.IsRemoved)</td>
+
+                <td>
+                    <div>
+                        <a class="btn btn-primary btn-circle" asp-page="./Details" asp-route-id="@customer.Id" asp-route-filter="@customer.Gender">View</a>
+                        <a class="btn btn-primary btn-circle" asp-page="./Edit" asp-route-id="@customer.Id">Edit</a>
+                        <a class="btn btn-danger btn-circle" asp-page="./Delete">Delete</a>
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+
