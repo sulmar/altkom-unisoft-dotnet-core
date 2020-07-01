@@ -17,13 +17,16 @@ namespace Altkom.UniSoft.WebApi.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService customerService;
+        private readonly ISenderService senderService;
+
         private readonly ILogger<CustomersController> logger;
 
         // private readonly IProductService productService;
 
-        public CustomersController(ICustomerService customerService, ILogger<CustomersController> logger)
+        public CustomersController(ICustomerService customerService, ISenderService senderService, ILogger<CustomersController> logger)
         {
             this.customerService = customerService;
+            this.senderService = senderService;
             this.logger = logger;
             //this.productService = productService;
         }
@@ -133,6 +136,7 @@ namespace Altkom.UniSoft.WebApi.Controllers
                 return BadRequest(ModelState);
 
             customerService.Add(customer);
+            senderService.Send(customer);
 
             // return Created($"api/customers/{customer.Id}", customer);
 
