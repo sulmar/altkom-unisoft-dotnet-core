@@ -6,7 +6,12 @@
 
 <h1>Edit</h1>
 
+@*@await Component.InvokeAsync("Customer", Model.Customer)*@
+
+<vc:customer customer="@Model.Customer"></vc:customer>
+
 <form method="post">
+
 
     <div class="form-row">
 

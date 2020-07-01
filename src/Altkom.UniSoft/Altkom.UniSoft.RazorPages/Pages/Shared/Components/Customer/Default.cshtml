@@ -1,0 +1,19 @@
+﻿@model Altkom.UniSoft.Models.Customer
+
+
+<div class="card shadow mb-4">
+    <div class="card-header">
+        <h6 class="m-0 text-primary">@Model.FullName</h6>
+    </div>
+
+    <div class="card-body">
+        <h3 class="card-title">@Model.FirstName</h3>
+        <h3 class="card-title">@Model.LastName</h3>
+        <h3 class="card-text">@Model.Email</h3>
+
+        @if (Model.Gender == Models.Gender.Woman)
+        {
+            <h3 class="card-text">Kobieta</h3>
+        }
+    </div>
+</div>
