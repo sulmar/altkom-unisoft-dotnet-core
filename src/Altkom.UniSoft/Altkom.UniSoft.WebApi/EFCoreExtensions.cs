@@ -18,7 +18,8 @@ namespace Altkom.UniSoft.WebApi
 
             var context = scope.ServiceProvider.GetService<TContext>();
 
-            context.Database.EnsureCreated();
+            // context.Database.EnsureCreated();
+            context.Database.Migrate();
 
             return host;
         }

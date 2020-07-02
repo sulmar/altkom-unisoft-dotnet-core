@@ -1,4 +1,5 @@
-﻿using Altkom.UniSoft.Models;
+﻿using Altkom.UniSoft.DbServices.Configurations;
+using Altkom.UniSoft.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,15 @@ namespace Altkom.UniSoft.DbServices
 
         // public DbSet<Item> Items { get; set; }
         public DbSet<Order> Orders { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+            modelBuilder.ApplyConfiguration(new ItemConfiguration());
+
+            // modelBuilder.ApplyConfigurationsFromAssembly()
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

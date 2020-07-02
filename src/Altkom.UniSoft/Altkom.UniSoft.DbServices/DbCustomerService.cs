@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Transactions;
 
 namespace Altkom.UniSoft.DbServices
 {
@@ -15,8 +16,28 @@ namespace Altkom.UniSoft.DbServices
 
         public void Add(Customer entity)
         {
-            context.Customers.Add(entity);
-            context.SaveChanges();
+            //using (TransactionScope transactionScope = new TransactionScope())
+            //{
+            //    context.Customers.Add(entity);
+            //    context.SaveChanges();
+
+            //    context.Customers.Add(entity);
+            //    context.SaveChanges();
+
+
+            //    transactionScope.Complete();
+            //};
+
+            using (var transaction = context.Database.BeginTransaction())
+            {                
+                context.Customers.Add(entity);
+                context.SaveChanges();
+
+                context.Customers.Add(entity);
+                context.SaveChanges();
+
+                transaction.Commit();
+            }
         }
 
         public Customer Get(string fullname)

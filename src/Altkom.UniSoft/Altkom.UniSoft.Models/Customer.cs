@@ -13,6 +13,8 @@ namespace Altkom.UniSoft.Models
         public string FirstName { get; set; }
         //[Required]
         //[StringLength(50)]
+
+        public string SecondName { get; set; }
         public string LastName { get; set; }
         public string FullName => $"{FirstName}{LastName}";
 

@@ -80,8 +80,9 @@ namespace Altkom.UniSoft.WebApi
 
             string connectionString = Configuration.GetConnectionString("MyConnection");
             // dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-            services.AddDbContext<UniSoftContext>(options => options.UseSqlServer(connectionString));
             
+            //services.AddDbContext<UniSoftContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContextPool<UniSoftContext>(options => options.UseSqlServer(connectionString));
 
             // TODO:
             // IOptions<FakeCustomerServiceOptions> options = Options.Create(new FakeCustomerServiceOptions { Count = 40 });            
