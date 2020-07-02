@@ -12,4 +12,9 @@ namespace Alktom.UniSoft.IServices
         ICollection<Customer> Get(CustomerSearchCriteria criteria);
     }
 
+    public interface ICustomerServiceAsync : IEntityServiceAsync<Customer>
+    {
+
+    }
+
 }
