@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.RestApiServi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.DbServices", "Altkom.UniSoft.DbServices\Altkom.UniSoft.DbServices.csproj", "{6E82BF24-3C1B-435C-AD33-2CF52EFFB230}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.DapperServices", "Altkom.UniSoft.DapperServices\Altkom.UniSoft.DapperServices.csproj", "{4C90E388-31E6-4975-8B29-3FFE120AC737}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{6E82BF24-3C1B-435C-AD33-2CF52EFFB230}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E82BF24-3C1B-435C-AD33-2CF52EFFB230}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E82BF24-3C1B-435C-AD33-2CF52EFFB230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C90E388-31E6-4975-8B29-3FFE120AC737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C90E388-31E6-4975-8B29-3FFE120AC737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C90E388-31E6-4975-8B29-3FFE120AC737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C90E388-31E6-4975-8B29-3FFE120AC737}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
