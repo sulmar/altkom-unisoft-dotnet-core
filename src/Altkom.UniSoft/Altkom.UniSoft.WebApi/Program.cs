@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Altkom.UniSoft.DbServices;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -12,9 +13,6 @@ using Serilog.Formatting.Compact;
 
 namespace Altkom.UniSoft.WebApi
 {
-    // dotnet add package Serilog.AspNetCore
-
-    // dotnet add package Serilog.Enrichers.Thread
 
     public class Program
     {
@@ -34,7 +32,7 @@ namespace Altkom.UniSoft.WebApi
             {
                 Log.Information($"Application starting in environment: {environmentName}...");
 
-                CreateHostBuilder(args).Build().Run();
+                CreateHostBuilder(args).Build().CreateDatabase<UniSoftContext>().Run();
             }
             catch(Exception ex)
             {
@@ -65,7 +63,7 @@ namespace Altkom.UniSoft.WebApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                })
+                })            
                 .UseSerilog();
     }
 }

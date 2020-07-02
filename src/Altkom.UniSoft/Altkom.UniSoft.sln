@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.RazorPages",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.RestApiServices", "Altkom.UniSoft.RestApiServices\Altkom.UniSoft.RestApiServices.csproj", "{5AC39549-DA71-4433-8E35-B27140DABE07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.DbServices", "Altkom.UniSoft.DbServices\Altkom.UniSoft.DbServices.csproj", "{6E82BF24-3C1B-435C-AD33-2CF52EFFB230}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{5AC39549-DA71-4433-8E35-B27140DABE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AC39549-DA71-4433-8E35-B27140DABE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AC39549-DA71-4433-8E35-B27140DABE07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E82BF24-3C1B-435C-AD33-2CF52EFFB230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E82BF24-3C1B-435C-AD33-2CF52EFFB230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E82BF24-3C1B-435C-AD33-2CF52EFFB230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E82BF24-3C1B-435C-AD33-2CF52EFFB230}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

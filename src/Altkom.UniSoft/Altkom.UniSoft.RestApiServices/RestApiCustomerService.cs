@@ -2,6 +2,7 @@
 using Altkom.UniSoft.Models;
 using Altkom.UniSoft.Models.SearchCriteria;
 using Newtonsoft.Json;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -11,6 +12,52 @@ using System.Threading.Tasks;
 
 namespace Altkom.UniSoft.RestApiServices
 {
+
+    // dotnet add package ServiceStack.HttpClient
+    public class ServiceStackCustomerServiceAsync : ICustomerServiceAsync
+    {
+        private const string BaseUri = "http://localhost:5000";
+
+        public async Task AddAsync(Customer entity)
+        {
+            var url = $"{BaseUri}/api/customers";
+
+            await url.PostJsonToUrlAsync(entity);
+        }
+
+        public async Task<ICollection<Customer>> GetAsync()
+        {
+            var url = $"{BaseUri}/api/customers";
+
+            string json = await url.GetJsonFromUrlAsync();
+
+            var customers = json.FromJson<ICollection<Customer>>();
+
+            return customers;
+        }
+
+        public async Task<Customer> GetAsync(int id)
+        {
+            var url = $"{BaseUri}/api/customers/{id}";
+
+            string json = await url.GetJsonFromUrlAsync();
+
+            var customer = json.FromJson<Customer>();
+
+            return customer;
+        }
+
+        public Task RemoveAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(Customer entity)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class RestApiCustomerService2 : RestApiEntityService<Customer>
     {
         public RestApiCustomerService2(HttpClient client) : base(client)

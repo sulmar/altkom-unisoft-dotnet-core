@@ -10,7 +10,7 @@ namespace Altkom.UniSoft.Models
         public string Number { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime? ShippedDate { get; set; }
-        public Customer Customer { get; set; }
+        public Customer Customer { get; set; }      // Navigation property
         public OrderStatus Status { get; set; }
         public ICollection<OrderDetail> Details { get; set; }
 
