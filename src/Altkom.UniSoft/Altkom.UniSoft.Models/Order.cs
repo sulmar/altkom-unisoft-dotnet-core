@@ -30,7 +30,10 @@ namespace Altkom.UniSoft.Models
     public enum OrderStatus
     {
         Draft,
-        Ordered,
+        Created,
+        Paid,
+        Completion,
+        Sent,
         Canceled,
         Done
     }

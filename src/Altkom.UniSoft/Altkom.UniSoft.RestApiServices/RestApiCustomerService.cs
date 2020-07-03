@@ -122,9 +122,16 @@ namespace Altkom.UniSoft.RestApiServices
     {        
         private readonly HttpClient client;
 
+
+       
         public RestApiCustomerService(HttpClient client)
         {
             this.client = client;
+        }
+
+        public void DoWork()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task AddAsync(Customer entity)

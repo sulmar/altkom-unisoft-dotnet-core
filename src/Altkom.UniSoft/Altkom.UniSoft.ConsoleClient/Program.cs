@@ -46,7 +46,8 @@ namespace Altkom.UniSoft.ConsoleClient
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:5001");
 
-            ICustomerServiceAsync customerService = new RestApiCustomerService(client);
+            ICustomerServiceAsync customerService = new RestApiCustomerService(client);            
+
             IEnumerable<Customer> customers = await customerService.GetAsync();
 
             foreach (var customer in customers)
