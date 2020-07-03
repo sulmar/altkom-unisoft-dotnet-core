@@ -9,6 +9,7 @@ using Altkom.UniSoft.FakeServices.Fakers;
 using Altkom.UniSoft.Models;
 using Altkom.UniSoft.Models.Validators;
 using Altkom.UniSoft.WebApi.Constraints;
+using Altkom.UniSoft.WebApi.HostedServices;
 using Bogus;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -91,6 +92,8 @@ namespace Altkom.UniSoft.WebApi
 
             // dotnet add package MediatR.Extensions.Microsoft.DependencyInjection
             services.AddMediatR(typeof(Startup).Assembly);
+
+            services.AddHostedService<HelloWorldHostedService>();
 
         }
 
