@@ -9,6 +9,19 @@ namespace Altkom.UniSoft.Models
 
     public class LampProxy : Lamp
     {
+        private int temp;
+
+        public int Temp
+        {
+            get { return temp; }
+            set {
+                temp = value;                
+                machine.Fire(LampTrigger.ValueChanged);
+            
+            }
+        }
+
+
         private StateMachine<LampStatus, LampTrigger> machine;
         public override LampStatus Status => machine.State;
 
@@ -21,7 +34,14 @@ namespace Altkom.UniSoft.Models
                 .Permit(LampTrigger.Push, LampStatus.On);
 
             machine.Configure(LampStatus.On)
-                .Permit(LampTrigger.Push, LampStatus.Blinking);
+                .Permit(LampTrigger.Push, LampStatus.Blinking)
+                .PermitIf(LampTrigger.ValueChanged, LampStatus.Red, () => this.Temp > 50, ">50")
+                .IgnoreIf(LampTrigger.ValueChanged, ()=>this.Temp <= 50, "below 50 temp")
+                ;
+                
+            ;
+
+
 
             //machine.Configure(LampStatus.Blinking)
             //    .Permit(LampTrigger.Push, LampStatus.On);
@@ -41,11 +61,14 @@ namespace Altkom.UniSoft.Models
     {
         On,
         Blinking,
-        Off
+        Off,
+        Red
     }
 
     public enum LampTrigger
     {
-        Push
+        Push,
+        ValueChanged,
+        ElapsedTime
     }
 }

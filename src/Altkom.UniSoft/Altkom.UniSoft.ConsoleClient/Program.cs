@@ -39,6 +39,10 @@ namespace Altkom.UniSoft.ConsoleClient
 
             Console.WriteLine(lamp.Status);
 
+            lamp.Temp = 51;
+
+            Console.WriteLine(lamp.Status);
+
             lamp.Push();
 
             Console.WriteLine(lamp.Status);
