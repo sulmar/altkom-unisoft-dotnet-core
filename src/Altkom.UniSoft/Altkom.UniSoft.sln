@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.GrpcService"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.GrpcConsoleClient", "Altkom.UniSoft.GrpcConsoleClient\Altkom.UniSoft.GrpcConsoleClient.csproj", "{4F1287F8-B019-4D67-AB56-DB317852CEC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.WorkerService", "Altkom.UniSoft.WorkerService\Altkom.UniSoft.WorkerService.csproj", "{5A379FF3-1434-4D3D-8ADD-D9EC135B23DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.UniSoft.WindowsService", "Altkom.UniSoft.WindowsService\Altkom.UniSoft.WindowsService.csproj", "{EEC98248-DC4F-41C5-8075-9142F14E270A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,14 @@ Global
 		{4F1287F8-B019-4D67-AB56-DB317852CEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F1287F8-B019-4D67-AB56-DB317852CEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F1287F8-B019-4D67-AB56-DB317852CEC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A379FF3-1434-4D3D-8ADD-D9EC135B23DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A379FF3-1434-4D3D-8ADD-D9EC135B23DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A379FF3-1434-4D3D-8ADD-D9EC135B23DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A379FF3-1434-4D3D-8ADD-D9EC135B23DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC98248-DC4F-41C5-8075-9142F14E270A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC98248-DC4F-41C5-8075-9142F14E270A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC98248-DC4F-41C5-8075-9142F14E270A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC98248-DC4F-41C5-8075-9142F14E270A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
