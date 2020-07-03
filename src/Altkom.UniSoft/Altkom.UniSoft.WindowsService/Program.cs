@@ -10,7 +10,7 @@ namespace Altkom.UniSoft.WindowsService
     {
         static void Main(string[] args)
         {
-            .Run(s =>
+            HostFactory.Run(s =>
             {
                 s.Service<LoggingService>();
                 s.SetServiceName("Altkom Service");
