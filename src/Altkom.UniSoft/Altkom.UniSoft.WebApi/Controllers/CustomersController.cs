@@ -5,6 +5,7 @@ using Altkom.UniSoft.WebApi.Events;
 using Altkom.UniSoft.WebApi.Handlers;
 using Altkom.UniSoft.WebApi.Requests;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,7 +19,7 @@ namespace Altkom.UniSoft.WebApi.Controllers
 {
     // dotnet add package MediatR
 
-
+    [Authorize(Roles="developer, trainer")]
     // [RoutePrefix("api/customers")]
     [Route("api/customers")]
     public class CustomersController : ControllerBase
@@ -33,8 +34,8 @@ namespace Altkom.UniSoft.WebApi.Controllers
         // private readonly IProductService productService;
 
         public CustomersController(
-            ICustomerService customerService, 
-            ISenderService senderService, 
+            ICustomerService customerService,
+            ISenderService senderService,
             ILogger<CustomersController> logger,
             IMediator mediator)
         {
@@ -53,15 +54,26 @@ namespace Altkom.UniSoft.WebApi.Controllers
         //    return customers;
         //}
 
-        [HttpGet]        
+
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return BadRequest();
+            }
+
             // var customers = customerService.Get();
 
             var customers = await mediator.Send(new GetCustomersRequest());
 
-           // logger.LogInformation($"Pobrano {customers.Count} klientów.");
-            
+            //if (!User.IsInRole("Boss"))
+            //{
+            //    customers = customers.Where(c =>)
+            //}
+
+            // logger.LogInformation($"Pobrano {customers.Count} klientów.");
+
             return Ok(customers);
         }
 
@@ -137,6 +149,7 @@ namespace Altkom.UniSoft.WebApi.Controllers
 
         //  GET api/payments/{paymentId}"
 
+        [AllowAnonymous]
         [HttpGet("{customerId}/products")]
         public async Task<IActionResult> GetProducts([FromServices] IProductService productService, int customerId)
         {
@@ -180,7 +193,7 @@ namespace Altkom.UniSoft.WebApi.Controllers
 
                 return NoContent();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }

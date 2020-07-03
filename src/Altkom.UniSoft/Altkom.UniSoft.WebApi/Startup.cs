@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Alktom.UniSoft.IServices;
 using Altkom.UniSoft.DbServices;
 using Altkom.UniSoft.FakeServices;
@@ -12,19 +8,16 @@ using Altkom.UniSoft.WebApi.Constraints;
 using Altkom.UniSoft.WebApi.HealthChecks;
 using Altkom.UniSoft.WebApi.HostedServices;
 using Bogus;
-using FluentValidation;
 using FluentValidation.AspNetCore;
+using HealthChecks.UI.Client;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Altkom.UniSoft.WebApi
 {
@@ -97,10 +90,12 @@ namespace Altkom.UniSoft.WebApi
 
             services.AddHostedService<HelloWorldHostedService>();
 
-            services.AddHealthChecks()                    
+            services.AddHealthChecks()                                  
                         .AddCheck<RandomHealthCheck>("random");
 
-            services.AddHealthChecksUI();
+            services.AddHealthChecksUI().AddInMemoryStorage();
+
+            // dotnet add package AspNetCore.HealthChecks.UI.InMemory.Storage
 
         }
 
@@ -146,9 +141,16 @@ namespace Altkom.UniSoft.WebApi
             {
                 endpoints.MapControllers();
 
-                endpoints.MapHealthChecks("/health");
+                endpoints.MapHealthChecks("/health", new HealthCheckOptions
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
 
-                endpoints.MapHealthChecksUI(options => options.UIPath = "/health-ui");
+                endpoints.MapHealthChecksUI(options =>
+                {
+                    options.UIPath = "/health-ui";
+                });
             });
         }
     }
