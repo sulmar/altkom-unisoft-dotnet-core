@@ -9,6 +9,7 @@ using Altkom.UniSoft.FakeServices.Fakers;
 using Altkom.UniSoft.Models;
 using Altkom.UniSoft.Models.Validators;
 using Altkom.UniSoft.WebApi.Constraints;
+using Altkom.UniSoft.WebApi.HealthChecks;
 using Altkom.UniSoft.WebApi.HostedServices;
 using Bogus;
 using FluentValidation;
@@ -44,6 +45,7 @@ namespace Altkom.UniSoft.WebApi
 
     // dotnet add package NSwag.AspNetCore
 
+    // dotnet add package AspNetCore.HealthChecks.UI
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -95,6 +97,11 @@ namespace Altkom.UniSoft.WebApi
 
             services.AddHostedService<HelloWorldHostedService>();
 
+            services.AddHealthChecks()                    
+                        .AddCheck<RandomHealthCheck>("random");
+
+            services.AddHealthChecksUI();
+
         }
 
 
@@ -138,6 +145,10 @@ namespace Altkom.UniSoft.WebApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+
+                endpoints.MapHealthChecks("/health");
+
+                endpoints.MapHealthChecksUI(options => options.UIPath = "/health-ui");
             });
         }
     }
