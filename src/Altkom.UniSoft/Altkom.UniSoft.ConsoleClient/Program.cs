@@ -16,12 +16,36 @@ namespace Altkom.UniSoft.ConsoleClient
         {
             Console.WriteLine("Hello World!");
 
-            await AddCustomerTest();
+            // await AddCustomerTest();
 
-            await GetCustomersTest();
+            // await GetCustomersTest();
+
+            StateMachineTest();
+
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
+        }
+
+        private static void StateMachineTest()
+        {
+            LampProxy lamp = new LampProxy();
+
+            Console.WriteLine(lamp.Graph);
+
+            Console.WriteLine(lamp.Status);
+
+            lamp.Push();
+
+            Console.WriteLine(lamp.Status);
+
+            lamp.Push();
+
+            Console.WriteLine(lamp.Status);
+
+            lamp.Push();
+
+            Console.WriteLine(lamp.Status);
         }
 
         private static async Task AddCustomerTest()
